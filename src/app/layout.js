@@ -1,13 +1,17 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import Navbar from "@/Components/Navbar";
 import "./globals.css";
+import { Nunito, Comfortaa } from "next/font/google";
+import Footer from "@/Components/Footer";
+import AuthProvider from "@/Provider/AuthProvider";
+import { Toaster } from "react-hot-toast";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const nunito = Nunito({
+  variable: "--font-nunito",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const comfortaa = Comfortaa({
+  variable: "--font-comfortaa",
   subsets: ["latin"],
 });
 
@@ -19,10 +23,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${nunito.variable} ${comfortaa.variable} antialiased`}>
+        <AuthProvider>
+          <Navbar></Navbar>
+          <div className="min-h-screen">{children}</div>
+          <Footer></Footer>
+          <Toaster></Toaster>
+        </AuthProvider>
       </body>
     </html>
   );

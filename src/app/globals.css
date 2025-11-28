@@ -1,6 +1,35 @@
 @import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default;
+}
 
-:root {
+@plugin "daisyui/theme" {
+  name: "PawHaven";
+  default: true;
+  --color-primary: #c163c9;
+  --color-primary-content: #fae7e6;
+  --color-secondary: #F2EBFD ;
+  --color-accent: #d9f4e4;
+}
+
+* {
+  font-family: "Nunito", sans-serif;
+}
+
+.font-primary {
+  font-family: "Comfortaa", sans-serif;
+}
+
+/* .btn-primary{
+  @apply btn btn-primary border-0
+} */
+
+/* --color-base-100: #FFF8E1; 
+--color-neutral: #3e2723;
+*/
+/* #E7DFFF , #f7dde2, #F9DCDA*/
+
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -23,4 +52,4 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-}
+} */
