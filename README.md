@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+# 🐾 **PawHaven – Pet Care Service Website**
+
+A modern pet-care service platform built with **Next.js**, featuring a smooth UI, responsive design, and dynamic service details page. Users can explore all services, view details, and contact easily.
+
+---
+
+## 🚀 **Setup & Installation**
+
+Follow the steps below to run the project locally:
+
+### 1️⃣ **Clone the repository**
+
+```bash
+git clone https://github.com/hafijurrahmanMILON/PawHaven.git
+cd pawhaven
+```
+
+### 2️⃣ **Install dependencies**
+
+```bash
+npm install
+```
+
+### 3️⃣ **Run the development server**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 4️⃣ Open project in browser
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Your app will now be running locally.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🛣️ **Route Summary**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Route                    | Description                                    |
+| ------------------------ | ---------------------------------------------- |
+| `/`                      | Homepage – Hero, featured services, highlights |
+| `/products`              | Displays all products/services                 |
+| `/products/[id]`         | Dynamic product/service details page           |
+| `/about`                 | About the company/brand                        |
+| `/contact`               | Contact form & support information             |
+| `/login`                 | User login page                                |
+| `/register`              | User registration page                         |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📁 **Project Structure**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+app/
+ ├─ page.jsx
+ ├─ products/
+ │   ├─ page.jsx
+ │   └─ [product_id]/
+ │        └─ page.jsx
+ ├─ about/
+ │   └─ page.jsx
+ ├─ contact/
+ │   └─ page.jsx
+components/
+ ├─ Navbar.jsx
+ ├─ Footer.jsx
+ └─ ProductDetailsCard.jsx
+public/
+ └─ services.json
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🛠️ **Tech Stack**
+
+* **Next.js 14 (App Router)**
+* **React**
+* **DaisyUI + TailwindCSS**
+* **Google Fonts**
+* **Dynamic Routing**
+* **Responsive UI**
+
+---
+
