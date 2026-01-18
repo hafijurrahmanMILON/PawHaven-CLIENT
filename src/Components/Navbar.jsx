@@ -9,6 +9,7 @@ import {
   IoPersonAddOutline,
 } from "react-icons/io5";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const router = useRouter();
@@ -21,6 +22,7 @@ const Navbar = () => {
     document.cookie = "auth=false; path=/;max-age=0";
     setIsLoggedIn(false);
     router.push("/");
+    toast.success('logout successful')
   };
 
   const links = (
