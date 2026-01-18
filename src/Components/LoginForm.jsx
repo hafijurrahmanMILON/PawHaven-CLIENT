@@ -121,7 +121,6 @@ const LoginForm = () => {
           </div>
         </div>
 
-        {/* Mock Login / Auto-fill Button */}
         <button
           onClick={handleAutoFill}
           type="button"
@@ -130,16 +129,6 @@ const LoginForm = () => {
           <IoFlashOutline className="text-xl animate-bounce" />
           Use Mock Credentials
         </button>
-
-        <p className="text-center mt-10 text-sm text-base-content/60">
-          New to PawHaven?{" "}
-          <Link
-            href="/register"
-            className="text-primary font-bold hover:underline"
-          >
-            Create an account
-          </Link>
-        </p>
       </div>
     </div>
   );
