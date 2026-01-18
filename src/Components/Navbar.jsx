@@ -123,7 +123,7 @@ const Navbar = () => {
             {" "}
             <button
               onClick={handleLogout}
-              className="hidden sm:flex items-center gap-2 text-sm md:text-md py-2 px-5 bg-primary text-white rounded-xl font-bold hover:bg-primary/90 transition-all duration-300 cursor-pointer shadow-lg shadow-primary/20 hover:shadow-primary/40 active:scale-95"
+              className="flex items-center gap-2 text-sm md:text-md py-2 px-5 bg-primary text-white rounded-xl font-bold hover:bg-primary/90 transition-all duration-300 cursor-pointer shadow-lg shadow-primary/20 hover:shadow-primary/40 active:scale-95"
             >
               <IoLogOutOutline />
               Logout
@@ -137,13 +137,6 @@ const Navbar = () => {
             >
               <IoLogInOutline className="text-xl" />
               Login
-            </Link>
-            <Link
-              href="/register"
-              className="hidden sm:flex items-center gap-2 text-sm md:text-md py-2 px-5 bg-primary text-white rounded-xl font-bold hover:bg-primary/90 transition-all duration-300 cursor-pointer shadow-lg shadow-primary/20 hover:shadow-primary/40 active:scale-95"
-            >
-              <IoPersonAddOutline className="text-xl" />
-              SignUp
             </Link>
           </div>
         )}
