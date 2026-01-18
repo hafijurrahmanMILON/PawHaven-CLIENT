@@ -3,14 +3,16 @@
   themes: light --default;
 }
 
+
+
 @plugin "daisyui/theme" {
   name: "PawHaven";
   default: true;
-  --color-primary: #c163c9;
-  --color-primary-content: #fae7e6;
-  --color-secondary: #F2EBFD ;
-  --color-accent: #d9f4e4;
+  --color-primary: #cb997e;    
+  --color-secondary: #faedcd;
+  --color-accent: #b7b7a4;     
 }
+
 
 * {
   font-family: "Nunito", sans-serif;
@@ -32,6 +34,16 @@
 /* :root {
   --background: #ffffff;
   --foreground: #171717;
+}
+
+
+@plugin "daisyui/theme" {
+  name: "PawHaven";
+  default: true;
+  --color-primary: #c163c9;
+  --color-primary-content: #fae7e6;
+  --color-secondary: #F2EBFD ;
+  --color-accent: #d9f4e4;
 }
 
 @theme inline {

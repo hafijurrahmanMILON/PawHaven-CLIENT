@@ -1,15 +1,10 @@
-"use client";
 import ProductCard from "@/Components/Home/ProductCard";
-import React, { useEffect, useState } from "react";
 
-const Page = () => {
-  const [allProducts, setAllProducts] = useState([]);
-
-  useEffect(() => {
-    fetch("/services.json")
-      .then((res) => res.json())
-      .then((data) => setAllProducts(data));
-  }, []);
+const Page = async() => {
+ 
+  const res = await fetch('http://localhost:5000/services')
+  const allProducts = await res.json()
+  console.log(allProducts)
 
   return (
     <div className="space-y-6 w-9/12 mx-auto my-12">
@@ -24,26 +19,8 @@ const Page = () => {
           and healthy throughout the winter months.
         </p>
       </div>
-      <div className="flex flex-col md:flex-row gap-4 justify-center items-center my-6">
-        <input
-          type="text"
-          placeholder="Search products..."
-          className="input input-bordered w-full md:w-1/2 rounded-lg"
-        />
-        <select
-          className="select select-bordered w-full md:w-1/4 rounded-lg "
-          defaultValue="Filter by Category"
-        >
-          <option disabled>Filter by Category</option>
-          <option>Clothing</option>
-          <option>Grooming</option>
-          <option>Nutrition</option>
-          <option>Accessories</option>
-          <option>Consultation</option>
-        </select>
-      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         {allProducts.map((service) => (
           <ProductCard key={service.serviceId} service={service} />
         ))}

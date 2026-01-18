@@ -2,7 +2,6 @@ import Navbar from "@/Components/Navbar";
 import "./globals.css";
 import { Nunito, Comfortaa } from "next/font/google";
 import Footer from "@/Components/Footer";
-import AuthProvider from "@/Provider/AuthProvider";
 import { Toaster } from "react-hot-toast";
 
 const nunito = Nunito({
@@ -24,12 +23,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${nunito.variable} ${comfortaa.variable} antialiased`}>
-        <AuthProvider>
           <Navbar></Navbar>
           <div className="min-h-screen">{children}</div>
           <Footer></Footer>
           <Toaster></Toaster>
-        </AuthProvider>
       </body>
     </html>
   );

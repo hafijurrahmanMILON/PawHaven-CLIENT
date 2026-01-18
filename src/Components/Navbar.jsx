@@ -1,27 +1,28 @@
 "use client";
 
-import React, { useContext } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "./Logo";
 import Link from "next/link";
-import { IoLogInOutline, IoLogOutOutline, IoPersonAddOutline } from "react-icons/io5";
-import { AuthContext } from "@/Context/AuthContext";
-import toast from "react-hot-toast";
+import {
+  IoLogInOutline,
+  IoLogOutOutline,
+  IoPersonAddOutline,
+} from "react-icons/io5";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+  const router = useRouter();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    setIsLoggedIn(document.cookie.includes("auth=true"));
+  }, []);
 
-  const { user, setUser, signOutFunc } =
-    useContext(AuthContext);
-  const handleSignOut = () => {
-    signOutFunc()
-      .then(() => {
-        toast.success("SignOut Successful");
-        setUser(null);
-      })
-      .catch((error) => {
-        toast.error(error.message);
-        console.log(error.message);
-      });
+  const handleLogout = () => {
+    document.cookie = "auth=false; path=/;max-age=0";
+    setIsLoggedIn(false);
+    router.push("/");
   };
+
   const links = (
     <>
       <li>
@@ -36,93 +37,110 @@ const Navbar = () => {
       <li>
         <Link href="/contact">Contact Us</Link>
       </li>
+      {isLoggedIn && (
+        <li>
+          <Link href="/dashboard">Dashboard</Link>
+        </li>
+      )}
     </>
   );
 
   return (
-    <div className="navbar shadow-sm px-2 md:px-12 lg:px-22 bg-secondary">
+    <div className="navbar sticky top-0 z-[100] backdrop-blur-md bg-secondary/40 py-4  px-4 md:px-12 lg:px-20 transition-all duration-300">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost lg:hidden hover:bg-primary/10"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-6 w-6 text-primary"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              {" "}
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M4 6h16M4 12h8m-8 6h16"
-              />{" "}
+              />
             </svg>
           </div>
           <ul
-            tabIndex={-1}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
+            tabIndex={0}
+            className="menu menu-sm dropdown-content bg-base-100 rounded-2xl z-[1] mt-4 w-60 p-4 shadow-2xl border border-primary/5 gap-2"
           >
             {links}
           </ul>
         </div>
-        <Logo></Logo>
+
+        <Link
+          href="/"
+          className="cursor-pointer transition-transform hover:scale-105 active:scale-95"
+        >
+          <Logo />
+        </Link>
       </div>
+
+      {/* Desktop Menu */}
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 gap-6">{links}</ul>
+        <ul className="menu menu-horizontal px-1 gap-2">{links}</ul>
       </div>
+
       <div className="navbar-end">
-        {user ? (
-          <div className="flex justify-center items-center gap-3 text-center">
-            <div className="dropdown dropdown-end lg:dropdown-center text-center z-50">
-              <div
-                tabIndex={0}
-                role="button"
-                className="m-1 transition-transform hover:scale-110"
-              >
-                <img
-                  className="w-12 h-12 rounded-full border-2 border-primary object-cover shadow-lg"
-                  referrerPolicy="no-referrer"
-                  src={user?.photoURL || userImg}
-                  alt="user"
-                />
-              </div>
-              <ul
-                tabIndex={0}
-                className="dropdown-content menu bg-base-100/80 backdrop-blur-lg rounded-2xl z-60 w-72 p-4 shadow-2xl border border-white/20 space-y-3"
-              >
-                <div className="text-center pb-2 border-b border-gray-400">
-                  <h1 className="text-primary font-semibold text-xl truncate">
-                    {user.displayName}
-                  </h1>
-                  <h1 className="text-sm truncate">{user.email}</h1>
-                </div>
-               
-                <button
-                  onClick={handleSignOut}
-                  className="flex btn btn-primary items-center gap-3 p-3 rounded-xl font-medium justify-center mt-2"
-                >
-                  <IoLogOutOutline className="text-lg" />
-                  Log out
-                </button>
-              </ul>
+        {/* <div className="flex items-center gap-4">
+        <div className="dropdown dropdown-end">
+          <div tabIndex={0} role="button" className="m-1 transition-all hover:ring-2 hover:ring-primary hover:ring-offset-2 rounded-full p-0.5">
+            <Image
+              className="w-11 h-11 rounded-full border-2 border-primary object-cover shadow-md"
+              referrerPolicy="no-referrer"
+              src={user?.photoURL || userImg}
+              alt="user"
+            />
+          </div>
+          <ul tabIndex={0} className="dropdown-content menu bg-base-100/95 backdrop-blur-xl rounded-2xl z-[100] w-72 p-5 shadow-2xl border border-primary/10 space-y-4 mt-3">
+            <div className="text-center pb-3 border-b border-base-200">
+              <h1 className="text-primary font-bold text-lg truncate">{user.displayName}</h1>
+              <h1 className="text-xs opacity-60 truncate">{user.email}</h1>
             </div>
+            <button
+              onClick={handleSignOut}
+              className="btn btn-primary btn-md w-full rounded-xl flex items-center gap-2 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all duration-300"
+            >
+              <IoLogOutOutline className="text-xl" />
+              Log out
+            </button>
+          </ul>
+        </div>
+      </div> */}
+        {isLoggedIn ? (
+          <div>
+            {" "}
+            <button
+              onClick={handleLogout}
+              className="hidden sm:flex items-center gap-2 text-sm md:text-md py-2 px-5 bg-primary text-white rounded-xl font-bold hover:bg-primary/90 transition-all duration-300 cursor-pointer shadow-lg shadow-primary/20 hover:shadow-primary/40 active:scale-95"
+            >
+              <IoLogOutOutline />
+              Logout
+            </button>{" "}
           </div>
         ) : (
           <div className="flex items-center gap-3">
             <Link
-              href='/login'
-              className="flex items-center gap-1 text-sm md:text-md py-1 md:py-2 px-2 md:px-4  border md:border-2 border-primary text-primary rounded-md font-semibold hover:bg-primary hover:text-white transition-all duration-300 hover:scale-105 transform"
+              href="/login"
+              className="flex items-center gap-2 text-sm md:text-md py-2 px-5 border-2 border-primary text-primary rounded-xl font-bold hover:bg-primary hover:text-white transition-all duration-300 cursor-pointer active:scale-95"
             >
-              <IoLogInOutline />
+              <IoLogInOutline className="text-xl" />
               Login
             </Link>
             <Link
-              href='/register'
-              className="flex items-center gap-1 text-sm md:text-md py-1 md:py-2 px-2 md:px-4   bg-primary text-white rounded-md font-semibold hover:bg-primary/90 transition-all duration-300 hover:scale-105 transform shadow-lg hover:shadow-xl"
+              href="/register"
+              className="hidden sm:flex items-center gap-2 text-sm md:text-md py-2 px-5 bg-primary text-white rounded-xl font-bold hover:bg-primary/90 transition-all duration-300 cursor-pointer shadow-lg shadow-primary/20 hover:shadow-primary/40 active:scale-95"
             >
-              <IoPersonAddOutline />
+              <IoPersonAddOutline className="text-xl" />
               SignUp
             </Link>
           </div>
