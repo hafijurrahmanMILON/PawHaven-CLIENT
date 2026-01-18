@@ -1,10 +1,9 @@
 import ProductCard from "@/Components/Home/ProductCard";
 
-const Page = async() => {
- 
-  const res = await fetch('http://localhost:5000/services')
-  const allProducts = await res.json()
-  console.log(allProducts)
+const Page = async () => {
+  const res = await fetch("https://paw-haven-server-livid.vercel.app/services");
+  const allProducts = await res.json();
+  console.log(allProducts);
 
   return (
     <div className="space-y-6 w-9/12 mx-auto my-12">
