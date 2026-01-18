@@ -1,5 +1,6 @@
 "use client";
 
+import Loading from "@/Components/Loading";
 import { useEffect, useState } from "react";
 import { 
   IoLayersOutline, 
@@ -26,12 +27,7 @@ export default function DashboardPage() {
   }, []);
 
   if (!stats) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#FAF9F6]">
-        <span className="loading loading-infinity loading-lg text-primary scale-150"></span>
-        <p className="mt-4 text-primary font-bold animate-pulse">Analyzing PawHaven Stats...</p>
-      </div>
-    );
+    return <Loading></Loading>;
   }
 
   return (
@@ -66,7 +62,6 @@ export default function DashboardPage() {
             <p className="text-4xl font-black text-base-content mt-2 relative z-10">{stats.totalServices}</p>
           </div>
 
-          {/* Available Slots Card */}
           <div className="bg-white p-8 rounded-[2.5rem] shadow-[0_20px_50px_rgba(203,153,126,0.1)] border border-primary/5 relative overflow-hidden group">
             <div className="absolute -right-4 -top-4 w-24 h-24 bg-secondary/30 rounded-full group-hover:scale-150 transition-transform duration-700"></div>
             <div className="w-14 h-14 bg-secondary/50 rounded-2xl flex items-center justify-center text-primary mb-6 relative z-10">

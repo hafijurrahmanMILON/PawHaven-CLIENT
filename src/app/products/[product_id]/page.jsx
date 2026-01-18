@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import ProductDetailsCard from "@/Components/ProductDetailsCard";
+import Loading from "@/Components/Loading";
 
 export default function ProductDetailsPage() {
   const { product_id } = useParams();
@@ -26,11 +27,7 @@ export default function ProductDetailsPage() {
   }, [product_id]);
 
   if (!product) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p>Loading...</p>
-      </div>
-    );
+    return <Loading></Loading>;
   }
 
   return (

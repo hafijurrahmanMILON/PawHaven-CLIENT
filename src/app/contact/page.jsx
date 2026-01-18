@@ -36,7 +36,7 @@ const ContactPage = () => {
               Send us a <span className="text-primary">Message</span>
             </h2>
             
-            <form className="space-y-6">
+            <form  className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-wider text-base-content/50 ml-1">First Name</label>

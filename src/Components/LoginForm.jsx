@@ -104,7 +104,7 @@ const LoginForm = () => {
           {/* Login Button */}
           <button
             type="submit"
-            className="w-full bg-primary text-white py-4 rounded-2xl font-bold shadow-xl shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-1 transition-all active:scale-95"
+            className="hover:cursor-pointer w-full bg-primary text-white py-4 rounded-2xl font-bold shadow-xl shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-1 transition-all active:scale-95"
           >
             Sign In
           </button>
@@ -116,7 +116,7 @@ const LoginForm = () => {
           </div>
           <div className="relative flex justify-center text-xs uppercase tracking-[0.2em]">
             <span className="bg-[#FAF9F6] px-4 text-base-content/40">
-              Testing Purpose
+              OR
             </span>
           </div>
         </div>
@@ -124,7 +124,7 @@ const LoginForm = () => {
         <button
           onClick={handleAutoFill}
           type="button"
-          className="w-full bg-accent/20 border border-accent/10 text-primary py-4 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-accent/30 transition-all active:scale-95 border-dashed"
+          className=" hover:cursor-pointer w-full bg-accent/20 border border-accent/10 text-primary py-4 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-accent/30 transition-all active:scale-95 border-dashed"
         >
           <IoFlashOutline className="text-xl animate-bounce" />
           Use Mock Credentials
